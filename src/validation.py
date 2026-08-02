@@ -3,9 +3,8 @@ from __future__ import annotations
 import pandas as pd
 
 
-# O REQUIRED_COLUMNS is a set of column names that must be present in the input DataFrame 
-# for risk validation. Se o dataframe tiver mais colunas, não há problema, mas se faltar alguma
-# dessas colunas, a validação falhará.
+# O REQUIRED_COLUMNS é um conjunto de nomes de colunas que deve estar presente no data frame para validação de riscos. Se o 
+# dataframe tiver mais colunas, não há problema, mas se faltar alguma dessas colunas, a validação falhará.
 
 REQUIRED_COLUMNS = {
     "id", "type", "description", "probability", "distribution",
@@ -23,8 +22,8 @@ def validate_risks(df: pd.DataFrame) -> list[str]:
         errors.append("Risk IDs must be unique.")
     if (~df["probability"].between(0, 1)).any():
         errors.append("Probability must be between 0 and 1.")
-    if (~df["type"].isin(["threat", "opportunity"])).any():
-        errors.append("Type must be threat or opportunity.")
+    if (~df["type"].isin(["risco", "oportunidade"])).any():
+        errors.append("Type must be risco or oportunidade.")
     if (~df["distribution"].isin(["fixed", "triangular", "pert"])).any():
         errors.append("Unsupported distribution found.")
 

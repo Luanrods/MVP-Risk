@@ -83,7 +83,7 @@ story = []
 
 story.append(Paragraph("MVP-Risk — Relatório de Caso Simulado", title_style))
 story.append(Paragraph(
-    f"Quantitative Cost Risk Analysis · Monte Carlo (Bernoulli + PERT/Triangular) · "
+    f"Análise Quantitativa de Riscos · Monte Carlo (Bernoulli + PERT/Triangular) · "
     f"{N_SIMULATIONS:,} cenários · seed={SEED}",
     subtitle_style,
 ))
@@ -108,7 +108,7 @@ t.setStyle(TableStyle([
 ]))
 story.append(t)
 
-story.append(Paragraph("2. Risk register de entrada", h2))
+story.append(Paragraph("2. Registro de Riscos", h2))
 reg_header = ["ID", "Tipo", "Descrição", "Prob.", "Dist.", "Min", "ML", "Max"]
 reg_rows = [reg_header]
 for _, r in risks.iterrows():
@@ -130,7 +130,7 @@ reg_table.setStyle(TableStyle([
 ]))
 story.append(reg_table)
 story.append(Paragraph(
-    "Threats somam custo quando ocorrem; opportunities subtraem. Todas as magnitudes de "
+    "Riscos somam custo quando ocorrem; Oportunidades subtraem. Todas as magnitudes de "
     "impacto são inseridas como valores positivos — o sinal é controlado pela coluna type.",
     small,
 ))

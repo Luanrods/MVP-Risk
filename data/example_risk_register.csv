@@ -1,5 +1,5 @@
 id,type,description,probability,distribution,min_impact,most_likely_impact,max_impact
-R01,threat,Transformer delay,0.30,pert,100000,400000,1200000
-R02,threat,Scope change,0.20,triangular,500000,1500000,4000000
-R03,threat,Engineering rework,0.40,pert,50000,250000,800000
-O01,opportunity,Procurement saving,0.25,triangular,100000,300000,600000
+R01,risco,Atraso no Transformador,0.30,pert,100000,400000,1200000
+R02,risco,Mudança de Escopo,0.20,triangular,500000,1500000,4000000
+R03,risco,Retrabalho de Engenharia,0.40,pert,50000,250000,800000
+O01,oportunidade,Economia com Compras,0.25,triangular,100000,300000,600000
