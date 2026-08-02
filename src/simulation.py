@@ -24,7 +24,7 @@ def simulate_cost_risk(df, baseline_cost, n_simulations=10_000, seed=42):
             most_likely=float(risk["most_likely_impact"]),
             maximum=float(risk["max_impact"]), size=n_simulations,
         )
-        sign = 1.0 if risk["type"] == "threat" else -1.0
+        sign = 1.0 if risk["type"] == "risco" else -1.0
         contributions[:, j] = occurs * impacts * sign
 
     final_cost = baseline_cost + contributions.sum(axis=1)

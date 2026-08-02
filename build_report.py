@@ -94,8 +94,8 @@ premise_data = [
     ["Budget / limite de aprovação", f"R$ {BUDGET:,.0f}"],
     ["Número de simulações", f"{N_SIMULATIONS:,}"],
     ["Seed", str(SEED)],
-    ["Riscos modelados", f"{len(risks)} ({(risks['type'] == 'threat').sum()} threats, "
-                          f"{(risks['type'] == 'opportunity').sum()} opportunity)"],
+    ["Riscos modelados", f"{len(risks)} ({(risks['type'] == 'risco').sum()} riscos, "
+                          f"{(risks['type'] == 'oportunidade').sum()} oportunidades)"],
 ]
 t = Table(premise_data, colWidths=[7.5 * cm, 8.5 * cm])
 t.setStyle(TableStyle([

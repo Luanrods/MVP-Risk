@@ -25,7 +25,7 @@ def mean_impact(row, lambd: float = 4.0) -> float:
 def add_emv(df):
     out = df.copy()
     out["mean_impact"] = out.apply(mean_impact, axis=1)
-    sign = out["type"].map({"threat": 1.0, "opportunity": -1.0})
+    sign = out["type"].map({"risco": 1.0, "oportunidade": -1.0})
     out["signed_emv"] = out["probability"] * out["mean_impact"] * sign
     return out
 

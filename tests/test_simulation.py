@@ -4,7 +4,7 @@ from src.simulation import simulate_cost_risk
 
 def one_risk(**overrides):
     row = {
-        "id": "R01", "type": "threat", "description": "Test risk",
+        "id": "R01", "type": "risco", "description": "Test risk",
         "probability": 1.0, "distribution": "fixed",
         "min_impact": 100.0, "most_likely_impact": 100.0, "max_impact": 100.0,
     }
@@ -22,7 +22,7 @@ def test_fixed_certain_threat_adds_cost():
     assert np.allclose(cost, 1100.0)
 
 def test_fixed_certain_opportunity_reduces_cost():
-    df = one_risk(type="opportunity", probability=1.0)
+    df = one_risk(type="oportunidade", probability=1.0)
     cost, _ = simulate_cost_risk(df, baseline_cost=1000.0, seed=1)
     assert np.allclose(cost, 900.0)
 
