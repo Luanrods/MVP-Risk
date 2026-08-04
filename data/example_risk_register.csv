@@ -1,6 +1,17 @@
 id,type,description,probability,distribution,min_impact,most_likely_impact,max_impact
-R01,risco,Atraso no Transformador,0.35,pert,100000,400000,1200000
-R02,risco,Mudança de Escopo,0.50,triangular,500000,1500000,4000000
-R03,risco,Retrabalho de Engenharia,0.40,pert,50000,250000,800000
-O01,oportunidade,Economia com Compras,0.25,triangular,100000,300000,600000
-O02,oportunidade,Nova Solução,0.25,pert,130000,500000,700000
+R01,risco,Atraso na fabricação do transformador,0.35,pert,200000,700000,2000000
+R02,risco,Mudança de escopo pelo cliente,0.45,triangular,500000,1800000,5000000
+R03,risco,Retrabalho de engenharia,0.40,pert,100000,400000,1200000
+R04,risco,Atraso na liberação de desenhos,0.35,pert,80000,300000,900000
+R05,risco,Aumento do preço de materiais,0.30,triangular,250000,900000,2500000
+R06,risco,Atraso no licenciamento ambiental,0.20,pert,150000,600000,1800000
+R07,risco,Interferências civis não identificadas,0.25,triangular,200000,750000,2200000
+R08,risco,Baixa produtividade da montagem eletromecânica,0.30,pert,150000,500000,1400000
+R09,risco,Falha nos testes de comissionamento,0.18,pert,100000,450000,1600000
+R10,risco,Indisponibilidade de desligamento programado,0.22,triangular,200000,800000,3000000
+O01,oportunidade,Negociação favorável com fornecedores,0.35,triangular,100000,450000,1200000
+O02,oportunidade,Otimização do projeto executivo,0.30,pert,80000,350000,900000
+O03,oportunidade,Antecipação da entrega de equipamentos,0.20,pert,50000,250000,700000
+O04,oportunidade,Reaproveitamento de materiais existentes,0.25,triangular,100000,400000,1100000
+O05,oportunidade,Melhoria da produtividade em campo,0.30,pert,100000,500000,1300000
+O06,oportunidade,Redução de custos logísticos,0.25,triangular,50000,300000,800000

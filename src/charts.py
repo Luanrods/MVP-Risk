@@ -11,6 +11,8 @@ def plot_histogram(final_cost, metrics, baseline_cost):
         ax.axvline(metrics[f"p{p}"], linestyle="--", color=c, label=f"P{p}")
     ax.axvline(baseline_cost, color="black", linewidth=1, label="Baseline")
     ax.legend(fontsize=8)
+    ax.set_xlabel("Custo Final Simulado")
+    ax.set_ylabel("Frequência")
     fig.tight_layout()
     return fig
 
@@ -21,7 +23,10 @@ def plot_s_curve(final_cost, budget=None):
     ax.plot(x, y, color="#1f6f78")
     if budget is not None:
         ax.axvline(budget, linestyle="--", color="#c0392b")
+    ax.set_xlabel("Custo Final Simulado")
+    ax.set_ylabel("Probabilidade acumulada (%)")
     fig.tight_layout()
+    
     return fig
 
 def plot_risk_drivers(drivers, top_n=10):
