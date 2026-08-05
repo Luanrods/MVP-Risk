@@ -20,8 +20,8 @@ from reportlab.platypus import (
 # ---------------------------------------------------------------------------
 # 1. Premissas do caso simulado — ajuste esses 4 valores pro seu projeto real
 # ---------------------------------------------------------------------------
-BASELINE_COST = 30_000_000.0
-BUDGET = 32_000_000.0
+BASELINE_COST = 40_000_000.0
+BUDGET = 44_000_000.0
 N_SIMULATIONS = 100_000
 SEED = 42
 
