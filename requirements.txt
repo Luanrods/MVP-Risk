@@ -1,7 +1,8 @@
-numpy
-pandas
-scipy
-matplotlib
-reportlab
-streamlit
-pytest
+numpy==2.4.4
+pandas==3.0.2
+scipy==1.17.1
+matplotlib==3.10.8
+reportlab==4.4.10
+streamlit==1.61.1
+pytest==9.1.1
+ 

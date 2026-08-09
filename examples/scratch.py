@@ -1,3 +1,12 @@
+"""
+Manual sanity check for the Monte Carlo engine.
+ 
+Sets up one certain risk and one certain opportunity with known impacts and
+confirms simulate_cost_risk() lands on the expected deterministic result.
+Not part of the pytest suite — run standalone from the repo root with:
+    python -m examples.scratch_manual_check
+"""
+
 import pandas as pd
 from src.simulation import simulate_cost_risk
 
