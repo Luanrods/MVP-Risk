@@ -1,17 +1,23 @@
-# src/validation.py
+"""Risk register schema validation."""
 from __future__ import annotations
+
 import pandas as pd
 
-
-# O REQUIRED_COLUMNS é um conjunto de nomes de colunas que deve estar presente no data frame para validação de riscos. Se o 
-# dataframe tiver mais colunas, não há problema, mas se faltar alguma dessas colunas, a validação falhará.
-
+# Columns every risk register must have. Extra columns are fine; missing
+# ones fail validation immediately.
 REQUIRED_COLUMNS = {
     "id", "type", "description", "probability", "distribution",
     "min_impact", "most_likely_impact", "max_impact",
 }
 
+
 def validate_risks(df: pd.DataFrame) -> list[str]:
+    """Check a risk register DataFrame against the expected schema.
+
+    Returns a list of human-readable error strings — empty if the register
+    is valid. Callers (e.g. ``simulate_cost_risk``) typically raise a
+    ``ValueError`` joining these messages when the list is non-empty.
+    """
     errors: list[str] = []
 
     missing = REQUIRED_COLUMNS - set(df.columns)

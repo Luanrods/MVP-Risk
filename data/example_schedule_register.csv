@@ -1,0 +1,8 @@
+id,type,description,probability,distribution,min_impact,most_likely_impact,max_impact
+S01,risco,Atraso no licenciamento ambiental,0.35,pert,10,20,60
+S02,risco,Atraso na entrega de transformador de potência,0.25,triangular,15,30,90
+S03,risco,Condições climáticas adversas na montagem eletromecânica,0.40,triangular,5,10,25
+S04,risco,Retrabalho por não conformidade em obra civil,0.20,pert,7,15,35
+S05,risco,Atraso na energização pela concessionária,0.30,triangular,10,15,40
+S06,oportunidade,Antecipação da entrega de painéis de proteção,0.15,fixed,8,8,8
+S07,oportunidade,Otimização do cronograma de comissionamento,0.20,triangular,3,7,12

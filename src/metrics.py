@@ -38,3 +38,63 @@ def risk_driver_table(contribution_df, final_cost):
             corr = 0.0
         rows.append({"risk_id": risk_id, "spearman": corr, "abs_spearman": abs(corr)})
     return pd.DataFrame(rows).sort_values("abs_spearman", ascending=False)
+
+
+def convergence_report(
+    simulate_fn,
+    df: pd.DataFrame,
+    baseline,
+    n_values: list[int] | None = None,
+    seeds: list[int] | None = None,
+    percentiles: tuple[int, ...] = (50, 80),
+) -> pd.DataFrame:
+    """Check how stable percentile estimates are across sample sizes and seeds.
+
+    Runs ``simulate_fn`` (e.g. ``simulate_cost_risk`` or
+    ``simulate_schedule_risk``) once per (n_simulations, seed) combination
+    and reports the spread of each requested percentile across seeds, for
+    each sample size. A shrinking spread as n_simulations grows is evidence
+    the chosen iteration count is enough for a stable answer; a spread that
+    stays wide is a sign more iterations (or fewer, noisier seeds) are needed.
+
+    Parameters
+    ----------
+    simulate_fn : callable
+        A function with signature (df, baseline, n_simulations, seed) -> (values, contributions),
+        i.e. ``simulate_cost_risk`` or ``simulate_schedule_risk``.
+    df : DataFrame
+        Risk register.
+    baseline : float or dict
+        Baseline value or distribution spec, passed through to simulate_fn.
+    n_values : list[int], optional
+        Sample sizes to test. Defaults to [1_000, 10_000, 50_000, 100_000].
+    seeds : list[int], optional
+        Seeds to repeat each sample size with. Defaults to [1, 2, 3, 4, 5].
+    percentiles : tuple[int, ...]
+        Percentiles to track. Defaults to (50, 80).
+
+    Returns
+    -------
+    DataFrame with one row per n_simulations, and for each percentile: its
+    mean across seeds, and the (max - min) spread across seeds — the
+    practical "how much does the answer wobble" number.
+    """
+    n_values = n_values or [1_000, 10_000, 50_000, 100_000]
+    seeds = seeds or [1, 2, 3, 4, 5]
+
+    rows = []
+    for n in n_values:
+        seed_results = {p: [] for p in percentiles}
+        for seed in seeds:
+            values, _ = simulate_fn(df, baseline, n_simulations=n, seed=seed)
+            for p in percentiles:
+                seed_results[p].append(float(np.percentile(values, p)))
+
+        row = {"n_simulations": n}
+        for p in percentiles:
+            arr = np.array(seed_results[p])
+            row[f"p{p}_mean"] = float(arr.mean())
+            row[f"p{p}_spread"] = float(arr.max() - arr.min())
+        rows.append(row)
+
+    return pd.DataFrame(rows)
